@@ -12,24 +12,25 @@
     <h1>Illustration for post<a
         href='https://marian-caikovski.medium.com/websockets-and-server-sent-events-with-node-js-and-express-ccbefee091d5'>
         Websockets and Server-Sent Events with Node.js and Express.js</a></h1>
-    Try accessing <a href="/restricted">/restricted</a>, then authenticate with "tj" and "foobar".
 
     <% if (user) { %>
-      <p> Hello <%= user.name %>! </p>
-      <p> <a href=/logout> Logout </a> </p>
+      <p  class='links'><%= user.name %> <a href="/preferences">Preferences</a> <a href=/logout>Logout</a> </p>
+      <div id="tableDiv"></div>
       <% } else { %>
-        <div id="frameDiv">
+        <div class="loginPanel">
           <div id="g_id_onload" data-client_id="<%= CLIENT_ID %>" data-login_uri="http://localhost:3000/login"
-            data-auto_prompt="false">
+            data-auto_prompt="true" data-prompt_parent_id="oneTap">
           </div>
           <div class="g_id_signin" data-type="standard" data-size="large" data-theme="outline" data-text="sign_in_with"
-            data-shape="rectangular" data-logo_alignment="left">
+            data-shape="rectangular" data-logo_alignment="left" data-width="250">
           </div>
+          <div id="oneTap"></div>
         </div>
-        <% } %>
-
-
   </div>
+  <% } %>
+
+
+    </div>
 </body>
 
 </html>

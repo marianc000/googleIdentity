@@ -1,0 +1,1 @@
+export default [{ "login": "Marimero", "score": 16429 }, { "login": "MaxiMai", "score": 13654 }, { "login": "Blognetology", "score": 12627 }, { "login": "Catxxx0", "score": 11798 }, { "login": "Lirhifi", "score": 11703 }, { "login": "WokaMut", "score": 10411 }];

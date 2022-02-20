@@ -8,7 +8,9 @@ import logger from 'morgan';
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
 import session from 'express-session';
-
+import indexRouter from './routes/index.js';
+import apiRouter from './routes/api.js';
+ 
 const app = express();
 
 app.use(cookieParser());
@@ -29,24 +31,6 @@ app.use(session({
   secret: 'my secret phrase'
 }));
 
-
-
-
-
-function restrict(req, res, next) {
-  if (req.session.user) {
-    next();
-  } else {
-    res.redirect('/');
-  }
-}
-
-app.get('/restricted', restrict, function (req, res) {
-  res.send('Wahoo! restricted area, click to <a href="/logout">logout</a>');
-});
-
-app.get('/logout', (req, res) => req.session.destroy(() => res.redirect('/')));
-
 app.post('/login', async function (req, res) {
   if (!req.cookies.g_csrf_token || !req.body.g_csrf_token
     || req.cookies.g_csrf_token !== req.body.g_csrf_token) throw 'Wrong csrf_token';
@@ -59,33 +43,14 @@ app.post('/login', async function (req, res) {
   });
 })
 
-// app.get('/', function (req, res) {
-//   var body = '';
-//   if (req.session.views) {
-//     ++req.session.views;
-//   } else {
-//     req.session.views = 1;
-//     body += '<p>First time visiting? view this page in several browsers :)</p>';
-//   }
-//   res.send(body + '<p>viewed <strong>' + req.session.views + '</strong> times.</p>');
-// });
 
+app.use("/api", apiRouter);
+app.get('/logout', (req, res) => req.session.destroy(() => res.redirect('/')));
+app.use("/", indexRouter);
 
+  
 //app.use(logger(':method :url'))
-
-
-app.all('/', (req, res) => {
-
-  res.render('index', {
-    body: JSON.stringify(req.body ?? ''),
-    cookies: JSON.stringify(req.cookies ?? ''),
-    CLIENT_ID: process.env.CLIENT_ID,
-    user: req.session.user
-  });
-});
-
-
-
+ 
 const port = process.env.PORT || 3000;
 
 process.env.CLIENT_ID = '560954844311-54a76cjs4s8q5ffchffi8fpkvkh92h2r.apps.googleusercontent.com';
