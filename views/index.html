@@ -14,11 +14,13 @@
         Websockets and Server-Sent Events with Node.js and Express.js</a></h1>
 
     <% if (user) { %>
-      <p  class='links'><%= user.name %> <a href="/preferences">Preferences</a> <a href=/logout>Logout</a> </p>
+      <p class='links'>
+        <%= user.name %> <a href="/preferences">Preferences</a> <a href=/logout>Logout</a>
+      </p>
       <div id="tableDiv"></div>
       <% } else { %>
         <div class="loginPanel">
-          <div id="g_id_onload" data-client_id="<%= clientId %>" data-login_uri="http://localhost:3000/login"
+          <div id="g_id_onload" data-client_id="<%= clientId %>" data-login_uri="/login"
             data-auto_prompt="true" data-prompt_parent_id="oneTap">
           </div>
           <div class="g_id_signin" data-type="standard" data-size="large" data-theme="outline" data-text="sign_in_with"
