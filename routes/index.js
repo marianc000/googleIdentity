@@ -16,8 +16,8 @@ router.use((req, res, next) => {
     res.redirect('/');
 });
 
-router.get('/preferences', (req, res) => {
-  res.render('preferences', {
+router.get('/aboutme', (req, res) => {
+  res.render('aboutme', {
     user: req.session.user
   });
 });

@@ -4,7 +4,6 @@ const router = Router();
 export default router;
 
 router.use((req, res, next) => {
-  console.log(">api auth", req.session.user);
   if (req.session.user)
     next();
   else
@@ -12,6 +11,5 @@ router.use((req, res, next) => {
 });
 
 router.get('/top', (req, res) => {
-  console.log(">api top", req.session.user);
   res.send(data);
 });

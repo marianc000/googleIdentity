@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<head>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+  <div class="container">
+    <%- include('header.html') %>
+
+      <p class='links'>
+      <a href="/">Home</a> <a href=/logout>Logout</a>
+      </p>
+      <div class="preferences">
+        <table>
+          <tr><td>given_name</td><td><%= user.given_name %></td></tr>
+          <tr><td>family_name</td><td><%= user.family_name %></td></tr>
+          <tr><td>email</td><td><%= user.email %></td></tr>
+          <tr><td>picture</td><td><img src='<%= user.picture %>'</td></tr>
+        </table>
+      </div>
+  </div>
+</body>
+
+</html>
