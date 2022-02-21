@@ -10,7 +10,7 @@ import bodyParser from 'body-parser';
 import session from 'express-session';
 import indexRouter from './routes/index.js';
 import apiRouter from './routes/api.js';
- 
+
 const app = express();
 
 app.use(cookieParser());
@@ -48,12 +48,12 @@ app.use("/api", apiRouter);
 app.get('/logout', (req, res) => req.session.destroy(() => res.redirect('/')));
 app.use("/", indexRouter);
 
-  
+
 //app.use(logger(':method :url'))
- 
+
 const port = process.env.PORT || 3000;
 
-process.env.CLIENT_ID = '560954844311-54a76cjs4s8q5ffchffi8fpkvkh92h2r.apps.googleusercontent.com';
+app.locals.clientId = process.env.CLIENT_ID;
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`)
