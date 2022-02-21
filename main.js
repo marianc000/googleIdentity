@@ -53,6 +53,7 @@ app.use("/", indexRouter);
 
 const port = process.env.PORT || 3000;
 
+console.log("CLIENT_ID",process.env.CLIENT_ID);
 app.locals.clientId = process.env.CLIENT_ID;
 
 app.listen(port, () => {
