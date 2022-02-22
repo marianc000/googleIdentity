@@ -27,7 +27,7 @@ app.use(session({
   secret: 'some string for generating session ids'
 }));
 
-app.post('/login', async function (req, res) {
+app.post('/login', async (req, res) => {
   const user = await verify(req.body.credential);
   req.session.regenerate(() => {
     req.session.user = user;

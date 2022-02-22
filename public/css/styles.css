@@ -126,6 +126,7 @@ h1 {
 
 .links>a {
     font-weight: bold;
+    margin-left: 1em;
 }
 
 p.links {
