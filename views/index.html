@@ -5,6 +5,7 @@
   <script src="js/main.js" type="module"></script>
   <link rel="stylesheet" href="css/styles.css">
 </head>
+
 <body>
   <div class="container">
     <%- include('header.html') %>
@@ -15,11 +16,10 @@
         <div id="tableDiv"></div>
         <% } else { %>
           <div class="loginPanel">
-            <div id="g_id_onload" data-client_id="<%= process.env.CLIENT_ID %>" data-login_uri="/login" data-auto_prompt="true"
-              data-prompt_parent_id="oneTap">
+            <div id="g_id_onload" data-client_id="<%= process.env.CLIENT_ID %>" data-login_uri="/login"
+              data-auto_prompt="true" data-prompt_parent_id="oneTap">
             </div>
-            <div class="g_id_signin" data-type="standard" data-size="large" data-theme="outline"
-              data-text="sign_in_with" data-shape="rectangular" data-logo_alignment="left" data-width="250">
+            <div class="g_id_signin" data-width="250">
             </div>
             <div id="oneTap"></div>
           </div>
