@@ -1,6 +1,5 @@
 import express from 'express';
 import { verify } from './google.js';
-
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import ejs from 'ejs';
@@ -25,36 +24,24 @@ app.engine('.html', ejs.__express);
 app.set('view engine', 'html');
 
 app.use(session({
-  name: "SESSIONID",
-  resave: false, // don't save session if unmodified
-  saveUninitialized: false, // don't create session until something stored
-  secret: 'my secret phrase'
+  secret: 'some string for generating session ids'
 }));
 
 app.post('/login', async function (req, res) {
-  if (!req.cookies.g_csrf_token || !req.body.g_csrf_token
-    || req.cookies.g_csrf_token !== req.body.g_csrf_token) throw 'Wrong csrf_token';
-
-  const tiket = await verify(req.body.credential);
-  console.log("ticket", tiket);
+  const user = await verify(req.body.credential);
   req.session.regenerate(() => {
-    req.session.user = tiket;
+    req.session.user = user;
     res.redirect('/');
   });
 })
-
 
 app.use("/api", apiRouter);
 app.get('/logout', (req, res) => req.session.destroy(() => res.redirect('/')));
 app.use("/", indexRouter);
 
-
-//app.use(logger(':method :url'))
+app.use(logger(':method :url'))
 
 const port = process.env.PORT || 3000;
-
-console.log("CLIENT_ID",process.env.CLIENT_ID);
-app.locals.clientId = process.env.CLIENT_ID;
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`)
