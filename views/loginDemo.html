@@ -5,3 +5,20 @@
 </div>
 <div class="g_id_signin" data-width="250"></div>
 <div id="oneTap"></div>
+
+<% if (user) { %>
+  <p class='links'>
+    <%= user.name %> <a href="/aboutme">About me</a> <a href=/logout>Log out</a>
+  </p>
+  <div id="tableDiv"></div>
+<% } else { %>
+    <div class="loginPanel">
+      <div id="g_id_onload" data-client_id="<%= process.env.CLIENT_ID %>" data-login_uri="/login"
+        data-auto_prompt="true" data-prompt_parent_id="oneTap">
+      </div>
+      <div class="g_id_signin" data-width="250">
+      </div>
+      <div id="oneTap"></div>
+    </div>
+    </div>
+<% } %>

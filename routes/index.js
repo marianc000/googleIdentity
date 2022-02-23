@@ -4,7 +4,6 @@ export default router;
 
 router.get('/', (req, res) => {
   res.render('index', {
-    CLIENT_ID: process.env.CLIENT_ID,
     user: req.session.user
   });
 });
