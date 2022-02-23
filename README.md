@@ -1,4 +1,4 @@
-# Cross-Site Request Forgery attacks are not feasible anymore
-The server-side code protecting from CSRF attacks is doomed to extinction
+# Sign in with Google into Node.js-based web applications
+Easy session management with Express and Node.js
 
-Sample code for my post https://marian-caikovski.medium.com/cross-site-request-forgery-attacks-are-not-feasible-anymore-9f84e05b757d illustrating the effects of SameSite cookie attribute
+Sample code for my post https://marian-caikovski.medium.com/sign-in-with-google-into-node-js-based-web-applications-c0aee3082df9 about use of modern Sign in with Google and One Tap button for authentication in Node.js web applications
